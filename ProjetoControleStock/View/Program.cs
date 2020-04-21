@@ -13,6 +13,7 @@ namespace ProjetoControleStock
         static void Main(string[] args)
         {
             Pessoa pessoa = new Pessoa();
+            Produto produto = new Produto();
             string Op;
             do
             {
@@ -21,7 +22,7 @@ namespace ProjetoControleStock
                 Console.WriteLine("\n0 - Sair");
                 Console.WriteLine("1 - Cadastrar Pessoa");
                 Console.WriteLine("2 - Listar Pessoa");
-                Console.WriteLine("3 - Buscar Pessoa por CPF");
+                Console.WriteLine("3 - Cadastrar Produto");
                 Console.WriteLine("4 - Buscar Pessoa por Chave Primaria");
                 Console.WriteLine("5 - Buscar Pessoas por Parte do Nome");
                 Console.WriteLine("6 - Remover Pessoa");
@@ -61,38 +62,40 @@ namespace ProjetoControleStock
 
 
                         break;
-                    //case "2":
-                    //    pessoa = new Pessoa();
-                    //    Console.Clear();
-                    //    Console.WriteLine("-- Listar Pessoas --");
-                    //    foreach (Pessoa pessoaCadastrada in PessoaDAO.RetornarPessoas())
-                    //    {
-                    //        Console.WriteLine("Nome:" + pessoaCadastrada.Nome);
-                    //        Console.WriteLine("Cpf: " + pessoaCadastrada.CPF);
-                    //        Console.WriteLine("ID: " + pessoaCadastrada.PessoaId);
-                    //        Console.WriteLine("-----------------------------------");
-                    //    }
+                    case "2":
+                        pessoa = new Pessoa();
+                        Console.Clear();
+                        Console.WriteLine("-- Listar Pessoas --");
+                        foreach (Pessoa pessoaCadastrada in PessoaDAO.RetornarPessoas())
+                        {
+                            Console.WriteLine("Nome:" + pessoaCadastrada.Nome);
+                            Console.WriteLine("Cpf: " + pessoaCadastrada.CPF);
+                            Console.WriteLine("ID: " + pessoaCadastrada.id);
+                            Console.WriteLine("-----------------------------------");
+                        }
 
-                    //    break;
-                    //case "3":
-                    //    pessoa = new Pessoa();
-                    //    Console.Clear();
-                    //    Console.WriteLine("-- Listar Pessoas por CPF --");
-                    //    Console.WriteLine("Digite o CPF da pessoa: ");
-                    //    pessoa.CPF = Console.ReadLine();
-                    //    pessoa = PessoaDAO.RetornarPessoasporCPF(pessoa);
-                    //    if (pessoa != null)
-                    //    {
-                    //        Console.WriteLine("Nome:" + pessoa.Nome);
-                    //        Console.WriteLine("Cpf: " + pessoa.CPF);
-                    //        Console.WriteLine("-----------------------------------");
-                    //    }
-                    //    else
-                    //    {
-                    //        Console.WriteLine("Não existe nego com esse CPF");
-                    //    }
+                        break;
+                    case "3":
+                        produto = new Produto();
+                        Console.Clear();
+                        Console.WriteLine("-- Cadastrar Produto --");
+                        Console.WriteLine("Digite o nome do produto: ");
+                        produto.Nome = Console.ReadLine();
 
-                    //    break;
+                        Console.WriteLine("Digite o preço do produto: ");
+                        produto.Preco = Console.ReadLine();
+
+
+                        if (ProdutoDAO.cadastrarProdutos(produto))
+                        {
+                            Console.WriteLine("Produto Cadastrado!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Erro, tente novamente!");
+                        }
+
+                        break;
                     //case "4":
                     //    pessoa = new Pessoa();
                     //    Console.Clear();

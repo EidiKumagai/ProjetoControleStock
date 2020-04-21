@@ -10,7 +10,7 @@ namespace ProjetoControleStock.DAL
 {
     class PessoaDAO
     {
-        private static Context ctx = new Context();
+
         private static ModelPessoa ctx1 = new ModelPessoa();
 
 
@@ -26,6 +26,12 @@ namespace ProjetoControleStock.DAL
             {
                 return false;
             }
+        }
+
+
+        public static List<Pessoa> RetornarPessoas()
+        {
+            return ctx1.pessoas.ToList();
         }
 
     }
