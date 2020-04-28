@@ -12,88 +12,129 @@ namespace ProjetoControleStock
     {
         static void Main(string[] args)
         {
-            Pessoa pessoa = new Pessoa();
-            Produto produto = new Produto();
+            //Produto produto = new Produto();
+            Fornecedor fornecedor = new Fornecedor();
+            Cliente cliente = new Cliente();
+
+
+            
             string Op;
             do
             {
                 Console.Clear();
-                Console.WriteLine("-- BANCO DE DADOS --");
+                Console.WriteLine("-- Controle de Estoque --");
                 Console.WriteLine("\n0 - Sair");
-                Console.WriteLine("1 - Cadastrar Pessoa");
-                Console.WriteLine("2 - Listar Pessoa");
-                Console.WriteLine("3 - Cadastrar Produto");
-                Console.WriteLine("4 - Buscar Pessoa por Chave Primaria");
-                Console.WriteLine("5 - Buscar Pessoas por Parte do Nome");
-                Console.WriteLine("6 - Remover Pessoa");
-                Console.WriteLine("7 - Alterar Pessoa");
+                Console.WriteLine("1 - Cadastrar Cliente");
+                Console.WriteLine("2 - Listar Cliente");
+                Console.WriteLine("3 - Cadastrar Fornecedor");
+                Console.WriteLine("4 - Listar Fornecedor");
+                Console.WriteLine("5 - Cadastrar Produto");
+                Console.WriteLine("6 - Realizar Entrada ");
+                Console.WriteLine("7 - Realizar Saida");
+                Console.WriteLine("8 - Visualizar Estoque");
                 Console.WriteLine("Escolha uma Opção");
                 Op = Console.ReadLine();
 
                 switch (Op)
                 {
                     case "1":
-                        pessoa = new Pessoa();
-
+                        //pessoa = new Pessoa();
+                        cliente = new Cliente();
                         Console.Clear();
-                        Console.WriteLine("-- Cadastrar Pessoa --");
-                        Console.WriteLine("\nNome da Pessoa");
-                        pessoa.Nome = Console.ReadLine();
-                        Console.WriteLine("CPF");
-                        pessoa.CPF = Console.ReadLine();
-                        Console.WriteLine("Data de Nascimento");
-                        DateTime date = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
 
-                        pessoa.DatadeNascimento = date;
+                        Console.WriteLine("-- Cadastrar Cliente --");
 
-                        Console.WriteLine("Sexo");
-                        pessoa.Sexo = Console.ReadLine();
-                        Console.WriteLine("Telefone");
-                        pessoa.Telefone = Console.ReadLine();
+                        
+                        Console.WriteLine("\nDigite o Codigo do cliente");
+                        cliente.Cod_Cliente = Console.ReadLine();
+                     
+                        Console.WriteLine("\nDigite o nome");
+                        cliente.Nome = Console.ReadLine();
+                        
+                        Console.WriteLine("\nDigite o CPF/CNPJ");
+                        cliente.CpforCnpj = Console.ReadLine();
 
-                        if (PessoaDAO.CadastrarPessoa(pessoa))
+                        Console.WriteLine("\nDigite o razao Social");
+                        cliente.RazaoSocial = Console.ReadLine();
+
+                        Console.WriteLine("\nDigite o telefone");
+                        cliente.Telefone = Console.ReadLine();
+
+                        if (ClienteDAO.CadastrarCliente(cliente))
                         {
-                            Console.WriteLine("Pessoa Cadastrada!");
+                            Console.WriteLine("Cliente Cadastrado!");
                         }
                         else
                         {
-                            Console.WriteLine("Pessoa não Cadastrada!");
+                            Console.WriteLine("Cliente não Cadastrada!");
                         }
-
 
                         break;
                     case "2":
-                        pessoa = new Pessoa();
                         Console.Clear();
-                        Console.WriteLine("-- Listar Pessoas --");
-                        foreach (Pessoa pessoaCadastrada in PessoaDAO.RetornarPessoas())
+                        Console.WriteLine("-- Listar Clientes --");
+                        foreach (Cliente pessoaCadastrada in ClienteDAO.GetClientes())
                         {
+                            Console.WriteLine("CODIGO-CLIENTE:" + pessoaCadastrada.Cod_Cliente);
                             Console.WriteLine("Nome:" + pessoaCadastrada.Nome);
-                            Console.WriteLine("Cpf: " + pessoaCadastrada.CPF);
-                            Console.WriteLine("ID: " + pessoaCadastrada.id);
+                            Console.WriteLine("Razão Social: " + pessoaCadastrada.RazaoSocial);
+                            Console.WriteLine("Cpf/Cnpj: " + pessoaCadastrada.CpforCnpj);
+                            Console.WriteLine("Telefone: " + pessoaCadastrada.Telefone);
+
                             Console.WriteLine("-----------------------------------");
                         }
 
                         break;
                     case "3":
-                        produto = new Produto();
+                        fornecedor = new Fornecedor();
                         Console.Clear();
-                        Console.WriteLine("-- Cadastrar Produto --");
-                        Console.WriteLine("Digite o nome do produto: ");
-                        produto.Nome = Console.ReadLine();
 
-                        Console.WriteLine("Digite o preço do produto: ");
-                        produto.Preco = Console.ReadLine();
+                        Console.WriteLine("-- Cadastrar Fornecedor--");
 
+                        Console.WriteLine("\nDigite o Codigo do fornecedor");
+                        fornecedor.Cod_Fornecedor = Console.ReadLine();
 
-                        if (ProdutoDAO.cadastrarProdutos(produto))
+                        Console.WriteLine("\nDigite o nome");
+                        fornecedor.Nome = Console.ReadLine();
+
+                        Console.WriteLine("\nDigite o CPF/CNPJ");
+                        fornecedor.CpforCnpj = Console.ReadLine();
+
+                        Console.WriteLine("\nDigite o razao Social");
+                        fornecedor.RazaoSocial = Console.ReadLine();
+
+                        Console.WriteLine("\nDigite o telefone");
+                        fornecedor.Telefone = Console.ReadLine();
+
+                        Console.WriteLine("\nDigite o email");
+                        fornecedor.Email = Console.ReadLine();
+
+                        if (FornecedorDAO.CadastrarFornecedor(fornecedor))
                         {
-                            Console.WriteLine("Produto Cadastrado!");
+                            Console.WriteLine("Fornecedor Cadastrado!");
                         }
                         else
                         {
-                            Console.WriteLine("Erro, tente novamente!");
+                            Console.WriteLine("Fornecedor não Cadastrado!");
                         }
+                        //produto = new Produto();
+                        //Console.Clear();
+                        //Console.WriteLine("-- Cadastrar Produto --");
+                        //Console.WriteLine("Digite o nome do produto: ");
+                        //produto.Nome = Console.ReadLine();
+
+                        //Console.WriteLine("Digite o preço do produto: ");
+                        //produto.Preco = Console.ReadLine();
+
+
+                        //if (ProdutoDAO.cadastrarProdutos(produto))
+                        //{
+                        //    Console.WriteLine("Produto Cadastrado!");
+                        //}
+                        //else
+                        //{
+                        //    Console.WriteLine("Erro, tente novamente!");
+                        //}
 
                         break;
                     //case "4":
@@ -219,9 +260,7 @@ namespace ProjetoControleStock
 
                     //    break;
 
-                    default:
-                        Console.WriteLine("Escolha uma Opção");
-                        break;
+                   
                 }
                 Console.ReadKey();
             } while (!Op.Equals("0"));

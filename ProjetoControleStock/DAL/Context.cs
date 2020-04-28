@@ -1,28 +1,30 @@
-namespace ProjetoControleStock.Model
+namespace ProjetoControleStock.DAL
 {
     using MySql.Data.Entity;
+    using ProjetoControleStock.Model;
     using System;
     using System.Data.Entity;
     using System.Linq;
 
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
-    public class ModelProduto : DbContext
+    public class Context : DbContext
     {
-        // Your context has been configured to use a 'ModelProduto' connection string from your application's 
+        // Your context has been configured to use a 'Context' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
-        // 'ProjetoControleStock.Model.ModelProduto' database on your LocalDb instance. 
+        // 'ProjetoControleStock.DAL.Context' database on your LocalDb instance. 
         // 
-        // If you wish to target a different database and/or database provider, modify the 'ModelProduto' 
+        // If you wish to target a different database and/or database provider, modify the 'Context' 
         // connection string in the application configuration file.
-        public ModelProduto()
-            : base("name=ModelProduto")
+        public Context()
+            : base("name=Context")
         {
         }
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
-        public virtual DbSet<Produto> Produtos { get; set; }
+         public virtual DbSet<Cliente> Clientes { get; set; }
+         public virtual DbSet<Fornecedor> Fornecedores { get; set; }
     }
 
     //public class MyEntity
