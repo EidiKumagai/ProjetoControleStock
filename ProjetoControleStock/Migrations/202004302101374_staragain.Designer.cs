@@ -7,13 +7,13 @@ namespace ProjetoControleStock.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Inicial : IMigrationMetadata
+    public sealed partial class staragain : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Inicial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(staragain));
         
         string IMigrationMetadata.Id
         {
-            get { return "202004272225274_Inicial"; }
+            get { return "202004302101374_staragain"; }
         }
         
         string IMigrationMetadata.Source

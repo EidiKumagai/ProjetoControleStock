@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace ProjetoControleStock.DAL
 {
-    class FornecedorDAO
+    class ProdutoDAO
     {
         private static Context ctx = new Context();
 
-        public static bool CadastrarFornecedor(Fornecedor fornecedor)
+        public static bool CadastrarProduto(Produto produto)
         {
             try
             {
-                ctx.Fornecedores.Add(fornecedor);
+                ctx.Produtos.Add(produto);
                 ctx.SaveChanges();
                 return true;
             }
@@ -38,9 +38,9 @@ namespace ProjetoControleStock.DAL
         }
 
 
-        public static List<Fornecedor> GetFornecedores()
+        public static List<Produto> GetProdutos()
         {
-            return ctx.Fornecedores.ToList();
+            return ctx.Produtos.ToList();
         }
     }
 }

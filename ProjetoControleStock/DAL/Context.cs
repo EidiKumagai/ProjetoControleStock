@@ -25,6 +25,10 @@ namespace ProjetoControleStock.DAL
 
          public virtual DbSet<Cliente> Clientes { get; set; }
          public virtual DbSet<Fornecedor> Fornecedores { get; set; }
+         public virtual DbSet<Produto> Produtos { get; set; }
+         public virtual DbSet<Entrada> Entradas{ get; set; }
+         public virtual DbSet<Saida> Saidas{ get; set; }
+         public virtual DbSet<Estoque> Estoques{ get; set; }
     }
 
     //public class MyEntity

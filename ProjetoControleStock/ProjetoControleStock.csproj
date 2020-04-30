@@ -63,22 +63,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\EntradaDAO.cs" />
+    <Compile Include="DAL\EstoqueDAO.cs" />
     <Compile Include="DAL\FornecedorDAO.cs" />
     <Compile Include="DAL\ClienteDAO.cs" />
     <Compile Include="DAL\Context.cs" />
-    <Compile Include="Migrations\202004272225274_Inicial.cs" />
-    <Compile Include="Migrations\202004272225274_Inicial.Designer.cs">
-      <DependentUpon>202004272225274_Inicial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004272256409_Riquerednoscampos.cs" />
-    <Compile Include="Migrations\202004272256409_Riquerednoscampos.Designer.cs">
-      <DependentUpon>202004272256409_Riquerednoscampos.cs</DependentUpon>
+    <Compile Include="DAL\ProdutoDAO.cs" />
+    <Compile Include="DAL\SaiadaDAOcs.cs" />
+    <Compile Include="Migrations\202004302101374_staragain.cs" />
+    <Compile Include="Migrations\202004302101374_staragain.Designer.cs">
+      <DependentUpon>202004302101374_staragain.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Cliente.cs" />
+    <Compile Include="Model\Entrada.cs" />
+    <Compile Include="Model\Estoque.cs" />
     <Compile Include="Model\Fornecedor.cs" />
+    <Compile Include="Model\Produto.cs" />
+    <Compile Include="Model\Saida.cs" />
     <Compile Include="View\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Views\ViewCiente.cs" />
+    <Compile Include="View\Views\ViewEntrada.cs" />
+    <Compile Include="View\Views\ViewEstoque.cs" />
+    <Compile Include="View\Views\ViewFornecedor.cs" />
+    <Compile Include="View\Views\ViewProduto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -88,11 +97,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202004272225274_Inicial.resx">
-      <DependentUpon>202004272225274_Inicial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004272256409_Riquerednoscampos.resx">
-      <DependentUpon>202004272256409_Riquerednoscampos.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004302101374_staragain.resx">
+      <DependentUpon>202004302101374_staragain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
